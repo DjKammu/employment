@@ -120,10 +120,12 @@ class CompanyController extends Controller
           } 
 
          $company = Company::find($id);
+         $companies = Company::all()->except($id);
+         $codes = @$company->codes()->get();
               
          $perPage = request()->filled('per_page') ? request()->per_page : (new Company())->perPage;
 
-         return view('companies.edit',compact('company'));
+         return view('companies.edit',compact('company','companies','codes'));
     }
 
     /**

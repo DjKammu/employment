@@ -56,4 +56,16 @@ Route::resource('roles', App\Http\Controllers\RoleController::class)->middleware
 
 
 Route::resource('companies', App\Http\Controllers\CompanyController::class);
+Route::resource('codes', App\Http\Controllers\CodeController::class)
+                ->except('create','store');
+
+Route::prefix('companies')->group(function () {
+
+    Route::get('{id}/codes', [App\Http\Controllers\CodeController::class, 'create'])->name('companies.codes.create'); 
+
+    Route::post('{id}/codes', [App\Http\Controllers\CodeController::class, 'store'])->name('companies.codes.store');
+
+    Route::post('{id}/codes/multiple', [App\Http\Controllers\CodeController::class, 'storeMultiple'])->name('companies.codes.store.multiple');
+});
+
 

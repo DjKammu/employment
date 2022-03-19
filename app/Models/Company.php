@@ -17,4 +17,8 @@ class Company extends Model
       'zip_code','notes' ,'photo'
     ];
 
+    public function codes(){
+    	return $this->hasMany(Code::class);
+    }
+
 }

@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                             <div class="card-body">
 
-                            <!--   <div class="nav-tabs-navigation">
+                              <div class="nav-tabs-navigation">
                                     <div class="nav-tabs-wrapper">
                                         <ul id="tabs" class="nav nav-tabs" role="tablist">
 
@@ -39,14 +39,19 @@
                                                 <a class="nav-link text-dark active"  data-toggle="tab" href="#details" role="tab"
                                                    aria-expanded="true">Details</a>
                                             </li>
+                                             <li class="nav-item">
+                                                <a class="nav-link text-dark"  data-toggle="tab" href="#codes" role="tab"
+                                                   aria-expanded="true">Codes</a>
+                                            </li>
 
                                         </ul>
                                     </div>
-                               </div> -->
+                               </div>
 
                                 <div id="my-tab-content" class="tab-content">
 
                                     @include('companies.includes.details')
+                                    @include('companies.includes.codes')
                                     
                               </div>
 
