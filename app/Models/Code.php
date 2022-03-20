@@ -14,7 +14,7 @@ class Code extends Model
     protected $fillable = [
      'company_id', 'code',
      'company_nick_name',
-     'form_link'
+     'form_link','title'
     ];
 
 

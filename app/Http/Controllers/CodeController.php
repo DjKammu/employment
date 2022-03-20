@@ -121,7 +121,8 @@ class CodeController extends Controller
             $code =  Arr::except($code, ['company_id','id']);
           
              Code::updateOrCreate(
-                ['company_id' => $id, 'code' => $code['code']],
+                ['company_id' => $id, 'code' => $code['code'], 
+                'form_link' => $code['form_link']],
                 $code
             );
           }

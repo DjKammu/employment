@@ -35,7 +35,7 @@
                         <tr class="text-danger">
                             <th>Acc. No.</th>
                             <th>Code</th>
-                            <th>Title</th>
+                            <th>Form Title</th>
                             <th>Form Link</th>
                             <th>Edit</th>
                             <th>Delete</th>

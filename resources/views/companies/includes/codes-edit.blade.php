@@ -69,9 +69,9 @@
                                      <div class="row">
                                       <div class="col-lg-5 col-md-6 mx-auto">
                                             <div class="form-group">
-                                                <label class="text-dark" for="password">Title
+                                                <label class="text-dark" for="password">Form Title
                                                 </label>
-                                                <input  name="title"  type="text" class="form-control" value="{{ @$code->title }}" placeholder="Title" required="">
+                                                <input  name="title"  type="text" class="form-control" value="{{ @$code->title }}" placeholder="Form Title" required="">
                                             </div>
                                         </div>
 
@@ -92,7 +92,7 @@
 
                                     <!-- Submit Button -->
                                     <div class="col-12 text-center">
-                                        <button id="change-password-button" type="submit" class="btn btn-danger">Update Holiday 
+                                        <button id="change-password-button" type="submit" class="btn btn-danger">Update Code 
                                         </button>
                                     </div>
 
@@ -104,15 +104,5 @@
         </div>
     </div>
 </div>
-
-@endsection
-
-@section('pagescript')
-
-<script type="text/javascript">  
-$('.date').datetimepicker({
-    format: 'Y-M-D'
-});
-</script>
 
 @endsection
