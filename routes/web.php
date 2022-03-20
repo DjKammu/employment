@@ -49,6 +49,8 @@ Route::post('/profile', [App\Http\Controllers\HomeController::class, 'updateProf
 
 Route::post('/password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password');
 
+Route::get('/code', [App\Http\Controllers\HomeController::class, 'getLinks'])->name('code');
+
 Route::get('/setup', [App\Http\Controllers\HomeController::class, 'setup'])->name('setup');
 
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('can:add_users');

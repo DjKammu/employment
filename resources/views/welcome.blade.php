@@ -7,8 +7,17 @@
   </div>
 
   <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-      <form class="form" id="login_form" method="POST" action="{{ route('login') }}">
-            @csrf
+
+             @if ($errors->any())
+               <div class="alert alert-warning alert-dismissible fade show">
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>Error!</strong>  
+                   {{implode(',',$errors->all() )}}
+                </div>
+             @endif
+
+      <form class="form"  action="{{ route('code') }}">
+     
         <div class="card card-login">
             <div class="card-header ">
                 <div class="card-header ">
@@ -23,12 +32,8 @@
                             <i class="fa fa-code"></i>
                         </span>
                     </div>
-                    <input id="email" type="text" class="form-control menz-input @error('email') is-invalid @enderror" name="email" id="idInput" value="{{ old('email') }}" placeholder="Code" required>
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input id="code" type="text" class="form-control" name="code" id="idInput" value="{{ old('code') }}" placeholder="Code" required>
+                   
                 </div>
               
                 

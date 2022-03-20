@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subcontractor;
 use Illuminate\Http\Request;
-use App\Models\DocumentType;
-use App\Models\ProjectType;
-use App\Models\Category;
-use App\Models\Vendor;
-use App\Models\Trade;
+use App\Models\Code;
 use App\Models\User;
 use App\Models\Role;
 use Auth;
@@ -23,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('getLinks');
     }
 
     /**
@@ -115,6 +111,18 @@ class HomeController extends Controller
     public function setup(){
 
         return view('setup');
+    }
+
+    public function getLinks(Request $request){
+
+          $request->validate([
+            'code' => 'required|exists:codes,code'
+          ]);
+
+          $codes = Code::whereCode($request->code)->paginate((new Code)->perPage);
+   
+         return view('code-links',compact('codes'));
+
     }
 
 }

@@ -67,6 +67,17 @@
                                     <div class="row">
                                       <div class="col-lg-5 col-md-6 mx-auto">
                                             <div class="form-group">
+                                                <label class="text-dark" for="password">Title
+                                                </label>
+                                                <input  name="title"  type="text" class="form-control" value="{{ old('title')}}" placeholder="Title" required="">
+                                            </div>
+                                        </div>
+
+                                    </div> 
+
+                                     <div class="row">
+                                      <div class="col-lg-5 col-md-6 mx-auto">
+                                            <div class="form-group">
                                                 <label class="text-dark" for="password">Form Link
                                                 </label>
                                                 <input  name="form_link"  type="text" class="form-control" value="{{ old('form_link')}}" placeholder="Form Link" required="">
