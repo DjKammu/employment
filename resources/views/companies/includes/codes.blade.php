@@ -35,6 +35,7 @@
                         <tr class="text-danger">
                             <th>Acc. No.</th>
                             <th>Code</th>
+                            <th>Title</th>
                             <th>Form Link</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -45,6 +46,7 @@
                          <tr>
                            <td> {{ $k + 1 }}</td>
                            <td>{{ $code->code }}</td>
+                           <td>{{ $code->title }}</td>
                            <td>{{ $code->form_link }}</td>
                           <td>        
                             <button onclick="return window.location.href='/codes/{{$code->id}}'" rel="tooltip" class="btn btn-neutral bg-transparent btn-icon" data-original-title="Edit Company Type" title="Edit Company Type"> <i class="fa fa-edit text-success"></i> </button> 
