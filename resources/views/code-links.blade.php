@@ -14,7 +14,7 @@
         <tr class="text-danger">
             <th>No.</th>
             <th>Company Name </th>
-            <th>Nick Name</th>
+            <!-- <th>Nick Name</th> -->
             <th>Form Link</th>
         </tr>
         </thead>
@@ -23,8 +23,8 @@
          <tr>
            <td> {{$index + $codes->firstItem()}}  </td>
            <td> {{ @$code->company->name }}</td>
-           <td>{{ $code->company_nick_name }}</td>
-           <td><a href="{{ @$code->form_link }}" target="_blank"> {{ (@$code->title) ? @$code->title : @$code->company->name }} </a></td>
+           <!-- <td>{{ $code->company_nick_name }}</td> -->
+           <td><a href="{{ \App\Models\Code::validURL(@$code->form_link) }}" target="_blank"> {{ (@$code->title) ? @$code->title : @$code->company->name }} </a></td>
         
           <td>
              

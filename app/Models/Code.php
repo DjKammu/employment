@@ -22,5 +22,13 @@ class Code extends Model
 
         return $this->belongsTo(Company::class);
     }
+     
 
+    static public function validURL($url) {
+
+      if (substr($url, 0, 7) == 'http://') { return $url; }
+      if (substr($url, 0, 8) == 'https://') { return $url; }
+      return 'http://'. $url;
+
+    }
 }
