@@ -50,7 +50,6 @@
                                                 <input  name="code"  type="text" class="form-control" placeholder="Code" value="{{ old('code')}}" required="">
                                             </div>
                                         </div>
-
                                     </div> 
 
                                     <!-- <div class="row">
