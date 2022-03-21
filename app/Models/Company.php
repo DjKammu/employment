@@ -14,7 +14,8 @@ class Company extends Model
     protected $fillable = [
      'name' ,'address_1' , 'address_2' ,
       'city','state' , 'country',
-      'zip_code','notes' ,'photo'
+      'zip_code','notes' ,'photo',
+      'nick_name'
     ];
 
     public function codes(){

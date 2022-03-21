@@ -23,6 +23,15 @@ aria-expanded="true">
                                                 <input  name="name" value="{{ $company->name }}" type="text" class="form-control" placeholder="Name" required="">
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-dark" for="password">Nick Name 
+                                                </label>
+
+                                                <input  name="nick_name" value="{{ $company->nick_name }}" type="text" class="form-control" placeholder="Nick Name">
+                                            </div>
+                                        </div>
                                     
                                        <div class="col-lg-6 col-md-6">
                                             <div class="form-group">

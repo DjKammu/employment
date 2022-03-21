@@ -60,7 +60,12 @@ class CodeController extends Controller
         $data = $request->except('_token');
 
         $request->validate([
-              'code'               => 'required',
+              'code' => [
+                    'required',
+                     Rule::unique('codes')->where(function ($query) use($id) {
+                        return $query->where('company_id','!=', $id);
+                    }),
+                ],
               // 'company_nick_name'  => 'required',
               'form_link'          => 'required' 
         ]);
@@ -101,6 +106,7 @@ class CodeController extends Controller
          if(Gate::denies('add')) {
                return abort('401');
         } 
+        dd('Done');
 
         $data = $request->except('_token');
 
@@ -146,15 +152,20 @@ class CodeController extends Controller
         } 
 
         $data = $request->except('_token');
+
+        $code = Code::find($id);
         
-       $request->validate([
-              'code'               => 'required',
+        $request->validate([
+              'code' => [
+                    'required',
+                     Rule::unique('codes')->where(function ($query) use($code) {
+                        return $query->where('company_id','!=', $code->company_id);
+                    }),
+                ],
               // 'company_nick_name'  => 'required',
               'form_link'          => 'required' 
         ]);
 
-
-         $code = Code::find($id);
          
          if(!$code){
             return redirect()->back();

@@ -3,7 +3,7 @@
 @section('content')
    
   <div class="col-lg-12 col-md-12 ml-auto mr-auto text-center"> 
-     <h5>WELCOME TO EMPLOYMENT PORTAL</h5>
+     <h5>WELCOME TO {{ Str::upper(@$codes->first()->company_nick_name) }} PORTAL</h5>
   </div>
 
   <div class="col-lg-12 col-md-12 ml-auto mr-auto">
@@ -13,8 +13,6 @@
         <thead>
         <tr class="text-danger">
             <th>No.</th>
-            <th>Company Name </th>
-            <!-- <th>Nick Name</th> -->
             <th>Form Link</th>
         </tr>
         </thead>
@@ -22,7 +20,6 @@
           @foreach($codes as $index => $code)
          <tr>
            <td> {{$index + $codes->firstItem()}}  </td>
-           <td> {{ @$code->company->name }}</td>
            <!-- <td>{{ $code->company_nick_name }}</td> -->
            <td><a href="{{ \App\Models\Code::validURL(@$code->form_link) }}" target="_blank"> {{ (@$code->title) ? @$code->title : @$code->company->name }} </a></td>
         

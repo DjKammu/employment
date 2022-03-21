@@ -11,7 +11,7 @@
 
     </div>
 
-     <div class="row mb-2">
+    <!--  <div class="row mb-2">
         <div class="col-12">
             <form method="post" action="{{ route('companies.codes.store.multiple', [ 'id' => request()->company]) }}"> 
               @csrf
@@ -25,7 +25,7 @@
             <button >Assign Codes from other company</button>
           </form>
         </div>
-    </div>
+    </div> -->
 
     <!-- Categories Table -->
     <div class="table-responsive">
