@@ -3,7 +3,7 @@
 @section('content')
    
   <div class="col-lg-12 col-md-12 ml-auto mr-auto text-center"> 
-     <h5>WELCOME TO {{ Str::upper(@$codes->first()->company_nick_name) }} PORTAL</h5>
+     <h5>WELCOME TO {{ Str::upper(@$codes->first()->company->nick_name) }} PORTAL</h5>
   </div>
 
   <div class="col-lg-12 col-md-12 ml-auto mr-auto">
