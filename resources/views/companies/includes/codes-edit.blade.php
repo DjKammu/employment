@@ -80,9 +80,9 @@
                                     <div class="row">
                                       <div class="col-lg-5 col-md-6 mx-auto">
                                             <div class="form-group">
-                                                <label class="text-dark" for="password">Form Link
+                                                <label class="text-dark" for="password">Template ID
                                                 </label>
-                                                <input  name="form_link"  type="text" class="form-control" value="{{ @$code->form_link }}" placeholder="Form Link" required="">
+                                                <input  name="form_link"  type="text" class="form-control" value="{{ @$code->form_link }}" placeholder="Template ID" required="">
                                             </div>
                                         </div>
 

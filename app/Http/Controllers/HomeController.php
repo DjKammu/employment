@@ -121,7 +121,7 @@ class HomeController extends Controller
 
           $codes = Code::whereCode($request->code)->paginate((new Code)->perPage);
    
-         return view('code-links',compact('codes'));
+         return view('frontend.code-links',compact('codes'));
 
     }
 

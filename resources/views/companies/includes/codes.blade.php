@@ -36,7 +36,7 @@
                             <th>Acc. No.</th>
                             <th>Code</th>
                             <th>Form Title</th>
-                            <th>Form Link</th>
+                            <th>Template ID</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>

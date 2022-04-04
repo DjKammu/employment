@@ -13,7 +13,7 @@
         <thead>
         <tr class="text-danger">
             <th>No.</th>
-            <th>Form Link</th>
+            <th>Templates</th>
         </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
          <tr>
            <td> {{$index + $codes->firstItem()}}  </td>
            <!-- <td>{{ $code->company_nick_name }}</td> -->
-           <td><a href="{{ \App\Models\Code::validURL(@$code->form_link) }}" target="_blank"> {{ (@$code->title) ? @$code->title : @$code->company->name }} </a></td>
+           <td><a href="{{ route('template',@$code->form_link) }}" target="_blank"> {{ (@$code->title) ? @$code->title : @$code->company->name }} </a></td>
         
           <td>
              
@@ -51,7 +51,8 @@
 @endsection
 
 @section('pagescript')
- <style type="text/css">
+
+<style type="text/css">
      .main-panel.home{
         width: 100%;
         height: 100%;
@@ -61,5 +62,6 @@
         bottom: 0px;
         width: 100%;
      }
- </style>
+</style>
+
 @endsection

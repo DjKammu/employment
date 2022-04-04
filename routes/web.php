@@ -21,7 +21,7 @@ Route::get('/', function () {
     if (Auth::user()) { 
         return redirect('/dashboard');
     } 
-    return view('welcome');
+    return view('frontend.welcome');
 });
 
 Route::get('/register',function(){
@@ -49,7 +49,6 @@ Route::post('/profile', [App\Http\Controllers\HomeController::class, 'updateProf
 
 Route::post('/password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password');
 
-Route::get('/code', [App\Http\Controllers\HomeController::class, 'getLinks'])->name('code');
 
 Route::get('/setup', [App\Http\Controllers\HomeController::class, 'setup'])->name('setup');
 
@@ -70,4 +69,19 @@ Route::prefix('companies')->group(function () {
     Route::post('{id}/codes/multiple', [App\Http\Controllers\CodeController::class, 'storeMultiple'])->name('companies.codes.store.multiple');
 });
 
+Route::get('/code', [App\Http\Controllers\SignController::class, 'getLinks'])->name('code');
+
+Route::get('/template/{id}', [App\Http\Controllers\SignController::class, 'getTemplate'])->name('template');
+
+Route::post('/signdocument', function () {
+    return view('frontend.signdocument');
+})->name('signdocument');
+
+Route::get('/signcompleted', function () {
+    return view('frontend.signcompleted');
+})->name('signcompleted');
+
+Route::get('/redirect', function () {
+    return view('frontend.redirect');
+})->name('redirect');
 
