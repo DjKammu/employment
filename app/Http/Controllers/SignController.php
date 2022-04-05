@@ -6,6 +6,7 @@ use Httpful\Request as HttpfulRequest;
 use App\Models\Subcontractor;
 use Illuminate\Http\Request;
 use App\Models\Code;
+use App\Models\Setting;
 use Httpful;
 use Auth;
 
@@ -45,8 +46,8 @@ class SignController extends Controller
     }
 
     public function getTemplate(Request $request, $id){
-        
-         return view('frontend.template',compact('id'));
+         $code = $request->code;
+         return view('frontend.template',compact('id','code'));
 
     }
 
@@ -55,6 +56,7 @@ class SignController extends Controller
         $name = $request->name;
         $email = $request->email;
         $templateId = $request->template;
+        $code = $request->code;
     
         $accessToken = $this->getAccessToken();
         $documentId = ( $accessToken ) ? $this->sendDocument($name, $email, $accessToken, $templateId) :'';
@@ -71,14 +73,21 @@ class SignController extends Controller
     
     public function getAccessToken()
     {
-    
+        $code = @request()->code;
+        $credentials = Code::whereId($code)->first();
+        $setting = Setting::all();
+       
+        $CLIENT_ID = (@$credentials->client_id) ? $credentials->client_id : ( @$setting->where('name','client_id')->pluck('value')->first() ?  @$setting->where('name','client_id')->pluck('value')->first() : env("CLIENT_ID") );
+
+         $CLIENT_SECRET = (@$credentials->client_secret) ? $credentials->client_secret : ( @$setting->where('name','client_secret')->pluck('value')->first() ? @$setting->where('name','client_secret')->pluck('value')->first() : env("CLIENT_SECRET") ); 
+
         $authResponse = HttpfulRequest::post('https://account.boldsign.com/connect/token')
             ->expectsJson()
             ->body(
                 array(
                     "grant_type" => 'client_credentials',
-                    "client_id" =>   env("CLIENT_ID"),
-                    "client_secret" => env("CLIENT_SECRET"),
+                    "client_id" =>   $CLIENT_ID,
+                    "client_secret" => $CLIENT_SECRET,
                 ),
                 Httpful\Mime::FORM,
             )
@@ -117,10 +126,14 @@ class SignController extends Controller
             ->send();
 
        if ($sendResponse->hasErrors()) {
-            $errors = json_decode($sendResponse->raw_body,true)['errors'];
-            foreach ($errors as $key => $err) {
-                $this->error .= implode(',',$err);
+            $this->error = @json_decode($sendResponse->raw_body)->error;
+            $errors = @json_decode($sendResponse->raw_body,true)['errors'];
+            if($errors){
+                 foreach (@$errors as $key => $err) {
+                    $this->error .= implode(',',$err);
+                }
             }
+           
             return;
         }
 
@@ -145,11 +158,13 @@ class SignController extends Controller
             ->send();
 
        if ($signLinkresponse->hasErrors()) {
-            $errors = json_decode($signLinkresponse->raw_body,true)['errors'];
-            foreach ($errors as $key => $err) {
-                $this->error .= implode(',',$err);
+            $this->error = @json_decode($signLinkresponse->raw_body)->error;
+            $errors = @json_decode($signLinkresponse->raw_body,true)['errors'];
+            if($errors){
+                 foreach (@$errors as $key => $err) {
+                    $this->error .= implode(',',$err);
+                }
             }
-            return;
         }
 
         return $signLinkresponse->body->signLink;

@@ -20,6 +20,9 @@
                          <button type="button" class="btn btn-danger mt-0"  onclick="return window.location.href='{{url("users")}}'">Users
                         </button>
                         <button type="button" class="btn btn-danger mt-0"  onclick="return window.location.href='{{url("roles")}}'">Roles
+                        </button> 
+
+                        <button type="button" class="btn btn-danger mt-0"  onclick="return window.location.href='{{url("setting")}}'">Setting
                         </button>
                     </div>
                     <div class="col-12">

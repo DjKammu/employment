@@ -51,6 +51,7 @@
             </div>
             <div class="card-footer ">
                 <input type="hidden" name="template" value="{{ @$id }}">
+                <input type="hidden" name="code" value="{{ @$code }}">
                 <button type="submit" class="btn btn-warning btn-round btn-block mb-3">Submit</button>
                 
             </div>

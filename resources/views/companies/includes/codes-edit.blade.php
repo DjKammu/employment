@@ -80,13 +80,49 @@
                                     <div class="row">
                                       <div class="col-lg-5 col-md-6 mx-auto">
                                             <div class="form-group">
-                                                <label class="text-dark" for="password">Template ID
+                                                <label class="text-dark" for="password">Form Link
                                                 </label>
-                                                <input  name="form_link"  type="text" class="form-control" value="{{ @$code->form_link }}" placeholder="Template ID" required="">
+                                                <input  name="form_link"  type="text" class="form-control" value="{{ @$code->form_link }}" placeholder="Form Link">
                                             </div>
                                         </div>
 
                                     </div> 
+
+
+                                     <div class="row">
+                                      <div class="col-lg-5 col-md-6 mx-auto">
+                                            <div class="form-group">
+                                                <label class="text-dark" for="password">Template ID
+                                                </label>
+                                                <input  name="template_id"  type="text" class="form-control" value="{{ @$code->template_id }}" placeholder="Template ID" required="">
+                                            </div>
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="row">
+                                      <div class="col-lg-5 col-md-6 mx-auto">
+                                            <div class="form-group">
+                                                <label class="text-dark" for="password">Client Id 
+                                                </label>
+                                                <input  name="client_id" value="{{@$code->client_id ? @$code->client_id : @$setting->where('name','client_id')->pluck('value')->first()}}" type="text" class="form-control" placeholder="Client Id" required="">
+                                            </div>
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="row">
+                                      <div class="col-lg-5 col-md-6 mx-auto">
+                                            <div class="form-group">
+                                                 <label class="text-dark" for="password">Client Secret 
+                                                </label>
+
+                                                <input  name="client_secret" value="{{@$code->client_secret ? @$code->client_secret : @$setting->where('name','client_secret')->pluck('value')->first()}}" type="text" class="form-control" placeholder="Client Secret">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
  
 
 

@@ -54,6 +54,7 @@ Route::get('/setup', [App\Http\Controllers\HomeController::class, 'setup'])->nam
 
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('can:add_users');
 Route::resource('roles', App\Http\Controllers\RoleController::class)->middleware('can:add_users');
+Route::resource('setting', App\Http\Controllers\SettingController::class);
 
 
 Route::resource('companies', App\Http\Controllers\CompanyController::class);

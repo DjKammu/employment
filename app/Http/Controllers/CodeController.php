@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use App\Models\Company;
 use App\Models\Code;
+use App\Models\Setting;
 use Gate;
 use Carbon\Carbon;
 
@@ -42,7 +43,9 @@ class CodeController extends Controller
                return abort('401');
          } 
 
-        return view('companies.includes.codes-create');
+        $setting = Setting::get();    
+
+        return view('companies.includes.codes-create',compact('setting'));
     }
 
     /**
@@ -67,7 +70,7 @@ class CodeController extends Controller
                     }),
                 ],
               // 'company_nick_name'  => 'required',
-              'form_link'          => 'required' 
+              'template_id'          => 'required' 
         ]);
 
         $data['company_id'] = $id;
@@ -89,9 +92,10 @@ class CodeController extends Controller
                return abort('401');
           } 
 
-         $code = Code::find($id);         
+         $code = Code::find($id);  
+         $setting = Setting::get();           
 
-         return view('companies.includes.codes-edit',compact('code'));
+         return view('companies.includes.codes-edit',compact('code','setting'));
     }
 
 
@@ -163,7 +167,7 @@ class CodeController extends Controller
                     }),
                 ],
               // 'company_nick_name'  => 'required',
-              'form_link'          => 'required' 
+              'template_id'          => 'required' 
         ]);
 
          

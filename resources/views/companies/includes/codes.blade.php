@@ -36,6 +36,7 @@
                             <th>Acc. No.</th>
                             <th>Code</th>
                             <th>Form Title</th>
+                            <th>Form Link</th>
                             <th>Template ID</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -48,6 +49,7 @@
                            <td>{{ $code->code }}</td>
                            <td>{{ $code->title }}</td>
                            <td>{{ $code->form_link }}</td>
+                           <td>{{ $code->template_id }}</td>
                           <td>        
                             <button onclick="return window.location.href='/codes/{{$code->id}}'" rel="tooltip" class="btn btn-neutral bg-transparent btn-icon" data-original-title="Edit Company Type" title="Edit Company Type"> <i class="fa fa-edit text-success"></i> </button> 
                           </td>
