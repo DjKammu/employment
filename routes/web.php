@@ -73,9 +73,7 @@ Route::get('/code', [App\Http\Controllers\SignController::class, 'getLinks'])->n
 
 Route::get('/template/{id}', [App\Http\Controllers\SignController::class, 'getTemplate'])->name('template');
 
-Route::post('/signdocument', function () {
-    return view('frontend.signdocument');
-})->name('signdocument');
+Route::post('/signdocument',[App\Http\Controllers\SignController::class, 'signDocument'])->name('signdocument');
 
 Route::get('/signcompleted', function () {
     return view('frontend.signcompleted');
